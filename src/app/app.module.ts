@@ -19,6 +19,8 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatButtonModule} from '@angular/material/button';
+import { MoodTransitionComponent } from './mood-transition/mood-transition.component';
+import { MoodSummaryComponent } from './mood-summary/mood-summary.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {MatButtonModule} from '@angular/material/button';
     MontlyMoodBoardComponent,
     YearlyMoodBoardComponent,
     InsertMoodComponent,
-    NewMoodComponent
+    NewMoodComponent,
+    MoodTransitionComponent,
+    MoodSummaryComponent
   ],
   imports: [
     BrowserModule,

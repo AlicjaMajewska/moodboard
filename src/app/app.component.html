@@ -1,5 +1,3 @@
 <h3>Moodboard</h3>
-<div style="width: 100px; height: 100px;">
-    <mb-mood-cell [moods]="moods"></mb-mood-cell>
-</div>
+<mb-daily-mood-board class="full-height" [moods]="moods"></mb-daily-mood-board>
 <mb-insert-mood (onMoodAdded)="displayNewMood($event)"></mb-insert-mood>

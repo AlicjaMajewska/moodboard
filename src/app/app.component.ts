@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Mood, MoodCategory} from './mood';
+import * as moment from 'moment'
+import {Duration} from "moment";
 
 @Component({
   selector: 'mb-root',
@@ -8,25 +10,23 @@ import {Mood, MoodCategory} from './mood';
 })
 export class AppComponent implements OnInit {
 
-  title = 'mood-board';
   moods: Mood[] = [];
 
-
   ngOnInit(): void {
-    this.moods.push(this.createMood(MoodCategory.OVER_THE_MOON));
-    this.moods.push(this.createMood(MoodCategory.HAPPY));
-    this.moods.push(this.createMood(MoodCategory.ANGRY));
-    this.moods.push(this.createMood(MoodCategory.SAD));
+    this.moods.push(this.createMood(MoodCategory.OVER_THE_MOON, moment.duration("10:010:15")));
+    this.moods.push(this.createMood(MoodCategory.HAPPY, moment.duration("06:06:15")));
+    this.moods.push(this.createMood(MoodCategory.ANGRY, moment.duration("03:03:15")));
+    this.moods.push(this.createMood(MoodCategory.SAD, moment.duration("01:01:15")));
   }
 
-  createMood(moodCategory: MoodCategory): Mood {
-    const mood = new Mood()
-    mood.category = moodCategory;
-    mood.date = new Date();
-    return mood;
+  createMood(moodCategory: MoodCategory, timeDifference: Duration): Mood {
+    const category = moodCategory;
+    const date = moment().subtract(timeDifference).toDate();
+    const summary = 'some generic summary that repeats itself '.repeat(Math.floor(Math.random() * Math.floor(8)));
+    return Mood.withSummary(date, category, summary);
   }
 
   displayNewMood(mood: Mood) {
-    this.moods.push(mood);
+    this.moods = [...this.moods, mood];
   }
 }

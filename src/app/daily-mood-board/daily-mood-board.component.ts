@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Mood} from "../mood";
 
 @Component({
   selector: 'mb-daily-mood-board',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DailyMoodBoardComponent implements OnInit {
 
-  constructor() { }
+  @Input() moods: Mood[] = [];
 
   ngOnInit(): void {
   }

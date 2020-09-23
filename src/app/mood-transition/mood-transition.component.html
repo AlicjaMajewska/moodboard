@@ -1,0 +1,5 @@
+<div class="mood-transition" [style.background-image]="determineColors()"></div>
+<section style="display: flex; flex-direction: column; justify-content: space-between">
+  <mb-mood-summary [mood]="moodTransition.initial"></mb-mood-summary>
+  <mb-mood-summary *ngIf="isLast" [mood]="moodTransition.finishing"></mb-mood-summary>
+</section>

@@ -28,7 +28,7 @@ export class NewMoodComponent implements OnInit {
 
   save() {
     this.moodForm.patchValue({
-      date: Date.now()
+      date: new Date()
     });
     const mood = this.moodForm.value;
     this.matDialogRef.close(mood);

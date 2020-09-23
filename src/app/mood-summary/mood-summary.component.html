@@ -1,0 +1,10 @@
+<div class="mood-summary">
+  <div class="icon-and-time">
+    <img width="25" height="25"
+         [title]="nameOfMood(mood.category)"
+         [src]="pathToMoodIcon(mood.category)"
+         [alt]="nameOfMood(mood.category)">
+    <p class="mood-time">{{time(mood.date)}}</p>
+  </div>
+  <div class="summary">{{mood.summary}}</div>
+</div>
