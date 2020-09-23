@@ -2,4 +2,4 @@
 <div style="width: 100px; height: 100px;">
     <mb-mood-cell [moods]="moods"></mb-mood-cell>
 </div>
-<mb-insert-mood></mb-insert-mood>
+<mb-insert-mood (onMoodAdded)="displayNewMood($event)"></mb-insert-mood>

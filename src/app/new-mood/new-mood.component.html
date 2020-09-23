@@ -1,8 +1,27 @@
-<section>
-  <form [formGroup]="moodForm">
-    <select formControlName="country">
-      <option *ngFor="let mood of moods" [value]="country">{{country}}</option>
-    </select>
-      <input formControlName="email"/>
-  </form>
-</section>
+<h2 mat-dialog-title>Add new mood</h2>
+
+<mat-dialog-content class="mat-typography">
+  <section class="content">
+    <form [formGroup]="moodForm">
+      <div class="icons-container">
+        <div class="icon-container" *ngFor="let moodCategory of moodCategories" (click)="selectMood(moodCategory)">
+          <img width="60" height="60" class="mr-3"
+               [class.selected]="isMoodSelected(moodCategory)"
+               [title]="nameOfMood(moodCategory)"
+               [src]="pathToMoodIcon(moodCategory)"
+               [alt]="nameOfMood(moodCategory)">
+          <span>{{nameOfMood(moodCategory)}}</span>
+        </div>
+      </div>
+      <mat-form-field class="full-width" appearance="standard">
+      <textarea class="full-width" cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="20"
+                matInput formControlName="summary" placeholder="Summary"></textarea>
+      </mat-form-field>
+    </form>
+  </section>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button (click)="save()" cdkFocusInitial>Add</button>
+</mat-dialog-actions>

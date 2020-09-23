@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
-import { NewMoodComponent } from '../new-mood/new-mood.component';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {NewMoodComponent} from '../new-mood/new-mood.component';
+import {Mood} from "../mood";
 
 @Component({
   selector: 'mb-insert-mood',
@@ -9,7 +10,10 @@ import { NewMoodComponent } from '../new-mood/new-mood.component';
 })
 export class InsertMoodComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  @Output() onMoodAdded = new EventEmitter<Mood>();
+
+  constructor(public dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
   }
@@ -17,11 +21,12 @@ export class InsertMoodComponent implements OnInit {
   createNewMood() {
     const dialogRef = this.dialog.open(NewMoodComponent, {
       height: '400px',
-      width: '600px',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe(newMood => {
+      if (newMood) {
+        this.onMoodAdded.emit(newMood);
+      }
     });
   }
 }

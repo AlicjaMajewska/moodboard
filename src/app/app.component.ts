@@ -25,4 +25,8 @@ export class AppComponent implements OnInit {
     mood.date = new Date();
     return mood;
   }
+
+  displayNewMood(mood: Mood) {
+    this.moods.push(mood);
+  }
 }
