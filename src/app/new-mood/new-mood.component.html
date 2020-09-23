@@ -1,0 +1,8 @@
+<section>
+  <form [formGroup]="moodForm">
+    <select formControlName="country">
+      <option *ngFor="let mood of moods" [value]="country">{{country}}</option>
+    </select>
+      <input formControlName="email"/>
+  </form>
+</section>
