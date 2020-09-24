@@ -9,6 +9,8 @@ import {Mood, MoodTransition} from '../mood';
 })
 export class MoodCellComponent {
 
+  @Input() shortened: boolean;
+
   private _moods: Mood[] = [];
   private fullTimeRange = 0;
   moodTransitions = [];

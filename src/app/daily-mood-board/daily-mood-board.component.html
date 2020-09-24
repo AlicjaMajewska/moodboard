@@ -1,4 +1,5 @@
-<div class="mood-cell-container">
-  <h3>Daily tracker</h3>
-  <mb-mood-cell style="display: flex; height: 100%" [moods]="moods"></mb-mood-cell>
+<div class="daily-mood-board">
+  <p style="align-self: center">{{date | date: 'EEEE'}}</p>
+  <p style="align-self: center">{{date | date: 'dd.MM.yyyy'}}</p>
+  <mb-mood-cell [moods]="moodsOfDay" [shortened]="shortened" class="mood-cell-container"></mb-mood-cell>
 </div>

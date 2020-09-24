@@ -19,8 +19,10 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatButtonModule} from '@angular/material/button';
-import { MoodTransitionComponent } from './mood-transition/mood-transition.component';
-import { MoodSummaryComponent } from './mood-summary/mood-summary.component';
+import {MoodTransitionComponent} from './mood-transition/mood-transition.component';
+import {MoodSummaryComponent} from './mood-summary/mood-summary.component';
+import {CommonModule, DatePipe} from "@angular/common";
+import {MoodIconComponent} from './mood-icon/mood-icon.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +35,12 @@ import { MoodSummaryComponent } from './mood-summary/mood-summary.component';
     InsertMoodComponent,
     NewMoodComponent,
     MoodTransitionComponent,
-    MoodSummaryComponent
+    MoodSummaryComponent,
+    MoodIconComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatDialogModule,
@@ -45,7 +49,7 @@ import { MoodSummaryComponent } from './mood-summary/mood-summary.component';
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

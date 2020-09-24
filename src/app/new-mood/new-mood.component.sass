@@ -1,10 +1,10 @@
-img.selected
-  filter: brightness(100%) drop-shadow(0 0 0.75rem #eecbb1)
-
-img
+.selectable-icons::ng-deep img
   border-radius: 30px
-  filter: brightness(95%) drop-shadow(0 0 0.75rem #dedede)
+  filter: brightness(85%) drop-shadow(0 0 1rem #707070)
   padding-bottom: 5px
+
+.selectable-icons.selected::ng-deep img
+  filter: brightness(100%) drop-shadow(0 0 1rem #d49f79)
 
 section.content
   display: flex
@@ -21,13 +21,14 @@ section.content
   flex-direction: column
   margin-right: 10px
   align-items: center
+
   &:hover
     cursor: pointer
 
 textarea.full-width, mat-form-field.full-width
-    min-width: 150px
-    max-width: 600px
-    width: 100%
+  min-width: 150px
+  max-width: 600px
+  width: 100%
 
 h2
   margin-bottom: 0

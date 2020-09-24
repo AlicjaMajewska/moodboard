@@ -1,3 +1,5 @@
 <h3>Moodboard</h3>
-<mb-daily-mood-board class="full-height" [moods]="moods"></mb-daily-mood-board>
+
+<mb-weekly-mood-board [moods]="moods" [startOfWeek]="calculateStartOfWeek()" class="full-height"></mb-weekly-mood-board>
+
 <mb-insert-mood (onMoodAdded)="displayNewMood($event)"></mb-insert-mood>

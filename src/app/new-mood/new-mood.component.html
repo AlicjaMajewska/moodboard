@@ -1,21 +1,18 @@
-<h2 mat-dialog-title>Add new mood</h2>
+<h2 mat-dialog-title>How are your feeling right now?</h2>
 
 <mat-dialog-content class="mat-typography">
   <section class="content">
     <form [formGroup]="moodForm">
       <div class="icons-container">
         <div class="icon-container" *ngFor="let moodCategory of moodCategories" (click)="selectMood(moodCategory)">
-          <img width="60" height="60" class="mr-3"
-               [class.selected]="isMoodSelected(moodCategory)"
-               [title]="nameOfMood(moodCategory)"
-               [src]="pathToMoodIcon(moodCategory)"
-               [alt]="nameOfMood(moodCategory)">
+          <mb-mood-icon [category]="moodCategory" [class.selected]="isMoodSelected(moodCategory)"
+                        class="selectable-icons" size="60"></mb-mood-icon>
           <span>{{nameOfMood(moodCategory)}}</span>
         </div>
       </div>
       <mat-form-field class="full-width" appearance="standard">
-      <textarea class="full-width" cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="20"
-                matInput formControlName="summary" placeholder="Summary"></textarea>
+      <textarea cdkAutosizeMaxRows="10" cdkAutosizeMinRows="1" cdkTextareaAutosize class="full-width"
+                formControlName="summary" matInput placeholder="What is happening?"></textarea>
       </mat-form-field>
     </form>
   </section>

@@ -38,10 +38,6 @@ export class NewMoodComponent implements OnInit {
     return MoodCategory.moodName(moodCategory);
   }
 
-  pathToMoodIcon(moodCategory: MoodCategory): string {
-    return '/assets/icons/emoji_gif_100px/' + MoodCategory.filename(moodCategory);
-  }
-
   selectMood(moodCategory: MoodCategory): void {
     this.moodForm.patchValue({
       category: moodCategory

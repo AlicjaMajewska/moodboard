@@ -1,7 +1,10 @@
 <div class="mood-cell">
-  <div class="mood-transition-container" *ngFor="let moodTransition of moodTransitions; let last = last; let i = index"
+  <div *ngFor="let moodTransition of moodTransitions; let last = last; let first = first; let i = index"
+       class="mood-transition-container"
        [style.height]="calculateHeightOfTransition(moodTransition)">
-    <mb-mood-transition style="display: flex; height: 100%; width: 100%" [isLast]="last"
+    <mb-mood-transition [isFirst]="first"
+                        [isLast]="last" [shortened]="shortened"
+                        style="display: flex; height: 100%; width: 100%"
                         [moodTransition]="moodTransition"></mb-mood-transition>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Mood} from "../mood";
 
 @Component({
@@ -6,11 +6,10 @@ import {Mood} from "../mood";
   templateUrl: './daily-mood-board.component.html',
   styleUrls: ['./daily-mood-board.component.sass']
 })
-export class DailyMoodBoardComponent implements OnInit {
+export class DailyMoodBoardComponent {
 
-  @Input() moods: Mood[] = [];
-
-  ngOnInit(): void {
-  }
+  @Input() moodsOfDay: Mood[] = [];
+  @Input() date: Date;
+  @Input() shortened: boolean;
 
 }

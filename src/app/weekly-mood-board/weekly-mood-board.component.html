@@ -1,1 +1,4 @@
-<p>weekly-mood-board works!</p>
+<div *ngFor="let moodsByDate of moodsByDates | keyvalue: dateAscOrder" class="daily-mood-container">
+  <mb-daily-mood-board [date]="dateOf(moodsByDate.key)" [moodsOfDay]="moodsByDate.value" [shortened]="true"
+                       class="full-height"></mb-daily-mood-board>
+</div>

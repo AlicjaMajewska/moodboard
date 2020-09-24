@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {Mood, MoodCategory, MoodTransition} from "../mood";
-import * as moment from 'moment'
 
 @Component({
   selector: 'mb-mood-transition',
@@ -10,7 +9,9 @@ import * as moment from 'moment'
 })
 export class MoodTransitionComponent {
 
+  @Input() shortened: boolean;
   @Input() isLast: boolean;
+  @Input() isFirst: boolean;
   @Input() moodTransition: MoodTransition;
 
   determineColors(): string {
@@ -22,4 +23,7 @@ export class MoodTransitionComponent {
     return MoodCategory.color(mood.category);
   }
 
+  shouldShowLastMood() {
+    return this.isLast && this.moodTransition.initial !== this.moodTransition.finishing;
+  }
 }

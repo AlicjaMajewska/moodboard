@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import * as moment from "moment";
-import {Mood, MoodCategory} from "../mood";
+import {Mood} from "../mood";
 
 @Component({
   selector: 'mb-mood-summary',
@@ -13,14 +13,6 @@ export class MoodSummaryComponent {
 
   time(date: Date): string {
     return moment(date).format('LT')
-  }
-
-  nameOfMood(moodCategory: MoodCategory): string {
-    return MoodCategory.moodName(moodCategory);
-  }
-
-  pathToMoodIcon(moodCategory: MoodCategory): string {
-    return '/assets/icons/emoji_gif_100px/' + MoodCategory.filename(moodCategory);
   }
 
 }

@@ -20,7 +20,6 @@ export class InsertMoodComponent implements OnInit {
 
   createNewMood() {
     const dialogRef = this.dialog.open(NewMoodComponent, {
-      height: '400px',
     });
 
     dialogRef.afterClosed().subscribe(newMood => {

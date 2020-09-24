@@ -1,5 +1,17 @@
-<div class="mood-transition" [style.background-image]="determineColors()"></div>
-<section style="display: flex; flex-direction: column; justify-content: space-between">
+<div [class.rounded-bottom-corners]="isLast" [class.rounded-top-corners]="isFirst"
+     [style.background-image]="determineColors()"
+     class="mood-transition">
+  <div *ngIf="shortened" class="center-on-color-block">
+    <mb-mood-icon [category]="moodTransition.initial.category" [size]="45"></mb-mood-icon>
+  </div>
+  <div *ngIf="shouldShowLastMood() && shortened" class="center-on-color-block last">
+    <mb-mood-icon [category]="moodTransition.finishing.category" [size]="45"></mb-mood-icon>
+  </div>
+
+</div>
+
+
+<section *ngIf="!shortened" style="display: flex; flex-direction: column; justify-content: space-between">
   <mb-mood-summary [mood]="moodTransition.initial"></mb-mood-summary>
-  <mb-mood-summary *ngIf="isLast" [mood]="moodTransition.finishing"></mb-mood-summary>
+  <mb-mood-summary *ngIf="shouldShowLastMood()" [mood]="moodTransition.finishing"></mb-mood-summary>
 </section>
