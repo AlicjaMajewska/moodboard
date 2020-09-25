@@ -16,7 +16,7 @@ export class WeeklyMoodBoardComponent implements OnInit {
   moodsByDates: { [date: string]: Mood[]; } = {};
   startOfWeek: Date;
 
-  constructor(private moodService: MoodService, private router: Router) { // TODO rounting params date
+  constructor(private moodService: MoodService, private router: Router) {
   }
 
   ngOnInit(): void {
