@@ -1,5 +1,6 @@
 <section class="container full-height">
-  <div *ngFor="let moodsByDate of moodsByDates | keyvalue: dateAscOrder" class="daily-mood-container">
+  <div (click)="navigateToDailyMoodBoard(moodsByDate.key)"
+       *ngFor="let moodsByDate of moodsByDates | keyvalue: dateAscOrder" class="daily-mood-container">
     <mb-daily-mood-board [date]="dateOf(moodsByDate.key)" [moodsOfDay]="moodsByDate.value" [shortened]="true"
                          class="full-height"></mb-daily-mood-board>
   </div>

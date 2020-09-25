@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Mood} from "./mood";
 import {MoodTestingFactory} from "./mood-testing-factory";
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,15 @@ export class MoodService {
     this.moods = MoodTestingFactory.createMoods()
   }
 
-  displayNewMood(mood: Mood): void {
+  addNewMood(mood: Mood): void {
     this.moods = [...this.moods, mood];
+  }
+
+  getMoodsByDate(date: Date): Mood[] {
+    const startDate = moment(date)
+    const endDate = moment(date).add(1, 'day')
+
+    return this.moods.filter(it => moment(it.date).isBetween(startDate, endDate));
   }
 
 }

@@ -5,6 +5,7 @@ import {DailyMoodContainerComponent} from "../daily-mood-container/daily-mood-co
 
 const routes: Routes = [
   {path: 'weekly-board', component: WeeklyMoodBoardComponent},
+  {path: 'daily-board/:date', component: DailyMoodContainerComponent},
   {path: 'daily-board', component: DailyMoodContainerComponent},
   {path: '', redirectTo: '/weekly-board', pathMatch: 'full'},
   {path: '**', component: WeeklyMoodBoardComponent} // TODO mayby 404-not-found

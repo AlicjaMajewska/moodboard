@@ -18,8 +18,8 @@ export class MoodTestingFactory {
     moods.push(this.createMood(MoodCategory.PRODUCTIVE, moment.duration("78:03:15")));
     moods.push(this.createMood(MoodCategory.SAD, moment.duration("92:01:15")));
     moods.push(this.createMood(MoodCategory.IN_LOVE, moment.duration("102:01:15")));
-    moods.push(this.createMood(MoodCategory.IN_LOVE, moment.duration("133:01:15")));
-    moods.push(this.createMood(MoodCategory.IN_LOVE, moment.duration("138:01:15")));
+    moods.push(this.createMood(MoodCategory.SLEEPY, moment.duration("133:01:15")));
+    moods.push(this.createMood(MoodCategory.PRODUCTIVE, moment.duration("138:01:15")));
 
     return moods;
   }

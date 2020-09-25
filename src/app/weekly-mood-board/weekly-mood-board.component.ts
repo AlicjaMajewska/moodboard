@@ -4,6 +4,7 @@ import {groupBy} from "lodash";
 import * as moment from 'moment'
 import {KeyValue} from "@angular/common";
 import {MoodService} from "../mood.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'mb-weekly-mood-board',
@@ -15,7 +16,7 @@ export class WeeklyMoodBoardComponent implements OnInit {
   moodsByDates: { [date: string]: Mood[]; } = {};
   startOfWeek: Date;
 
-  constructor(private moodService: MoodService) { // TODO rounting params date
+  constructor(private moodService: MoodService, private router: Router) { // TODO rounting params date
   }
 
   ngOnInit(): void {
@@ -31,6 +32,10 @@ export class WeeklyMoodBoardComponent implements OnInit {
 
   dateOf(dateAsString: string): Date {
     return new Date(dateAsString);
+  }
+
+  navigateToDailyMoodBoard(selectedDay: string): void {
+    this.router.navigate(['daily-board', moment(selectedDay).format('MM-DD-YYYY')]);
   }
 
   private addMissingDaysAsEmptyArray() {
