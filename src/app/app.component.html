@@ -1,5 +1,16 @@
-<h3>Moodboard</h3>
+<!--<h1>Moodboard</h1>-->
+<!--<nav>-->
+<!--  <ul>-->
+<!--    <li><a routerLink="/weekly-board" routerLinkActive="active">Weekly board</a></li>-->
+<!--    <li><a routerLink="/daily-board" routerLinkActive="active">Daily board</a></li>-->
+<!--  </ul>-->
+<!--</nav>-->
+<!--<router-outlet class="full-height"></router-outlet>-->
 
-<mb-weekly-mood-board [moods]="moods" [startOfWeek]="calculateStartOfWeek()" class="full-height"></mb-weekly-mood-board>
+<div class="root-view">
+  <!--  <mb-navigation >TODO add navigation component</mb-navigation>-->
+  <mb-insert-mood (onMoodAdded)="displayNewMood($event)"></mb-insert-mood>
+  <router-outlet></router-outlet>
+</div>
+<hotkeys-cheatsheet></hotkeys-cheatsheet>
 
-<mb-insert-mood (onMoodAdded)="displayNewMood($event)"></mb-insert-mood>

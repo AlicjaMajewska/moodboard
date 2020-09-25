@@ -7,9 +7,7 @@
   <div *ngIf="shouldShowLastMood() && shortened" class="center-on-color-block last">
     <mb-mood-icon [category]="moodTransition.finishing.category" [size]="45"></mb-mood-icon>
   </div>
-
 </div>
-
 
 <section *ngIf="!shortened" style="display: flex; flex-direction: column; justify-content: space-between">
   <mb-mood-summary [mood]="moodTransition.initial"></mb-mood-summary>

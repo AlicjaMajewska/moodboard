@@ -1,21 +1,26 @@
-import {Component, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Mood} from "../mood";
 import {groupBy} from "lodash";
 import * as moment from 'moment'
 import {KeyValue} from "@angular/common";
+import {MoodService} from "../mood.service";
 
 @Component({
   selector: 'mb-weekly-mood-board',
   templateUrl: './weekly-mood-board.component.html',
   styleUrls: ['./weekly-mood-board.component.sass']
 })
-export class WeeklyMoodBoardComponent {
+export class WeeklyMoodBoardComponent implements OnInit {
 
   moodsByDates: { [date: string]: Mood[]; } = {};
-  @Input() startOfWeek: Date;
+  startOfWeek: Date;
 
-  @Input()
-  set moods(moodsOfWeek: Mood[]) {
+  constructor(private moodService: MoodService) { // TODO rounting params date
+  }
+
+  ngOnInit(): void {
+    this.startOfWeek = moment().startOf('week').toDate();
+    const moodsOfWeek = this.moodService.moods; // TODO korzystanie z daty // TODO observable
     this.moodsByDates = groupBy(moodsOfWeek, mood => this.dateWithoutTime(mood.date));
     this.addMissingDaysAsEmptyArray();
   }

@@ -23,6 +23,9 @@ import {MoodTransitionComponent} from './mood-transition/mood-transition.compone
 import {MoodSummaryComponent} from './mood-summary/mood-summary.component';
 import {CommonModule, DatePipe} from "@angular/common";
 import {MoodIconComponent} from './mood-icon/mood-icon.component';
+import {MoodBoardRoutingModule} from "./mood-board-routing-module/mood-board-routing.module";
+import {HotkeyModule} from "angular2-hotkeys";
+import {DailyMoodContainerComponent} from './daily-mood-container/daily-mood-container.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import {MoodIconComponent} from './mood-icon/mood-icon.component';
     NewMoodComponent,
     MoodTransitionComponent,
     MoodSummaryComponent,
-    MoodIconComponent
+    MoodIconComponent,
+    DailyMoodContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +48,12 @@ import {MoodIconComponent} from './mood-icon/mood-icon.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     MatDialogModule,
+    HotkeyModule.forRoot(),
     MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,
     MatButtonModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    MoodBoardRoutingModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
