@@ -28,6 +28,7 @@ import { HotkeyModule } from "angular2-hotkeys";
 import { DailyMoodContainerComponent } from './daily-mood-container/daily-mood-container.component';
 import { ChartsModule } from 'ng2-charts';
 import { YearlyChartComponent } from './yearly-chart/yearly-chart.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { YearlyChartComponent } from './yearly-chart/yearly-chart.component';
     MoodSummaryComponent,
     MoodIconComponent,
     DailyMoodContainerComponent,
-    YearlyChartComponent
+    YearlyChartComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

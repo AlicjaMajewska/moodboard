@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <img src="assets/icons/emoji_gif_100px/emoji_18.gif" class="logo" height="60" width="60" alt="logo"/>
+  <button (click)="showMenu = !showMenu" class="navbar-toggler" type="button" data-toggle="collapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div [class.show]="showMenu" class="collapse navbar-collapse">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/weekly-board" routerLinkActive="active">Weekly board</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/daily-board" routerLinkActive="active">Daily board</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/yearly-board" routerLinkActive="active">Yearly board</a>
+      </li>
+      <mb-insert-mood></mb-insert-mood>
+    </ul>
+    <div *ngIf="currentUser$ | async as currentUser" class="navbar-nav user-menu" ngbDropdown placement="bottom-right">
+      <button class="btn btn-outline-primary"
+              ngbDropdownToggle>{{currentUser.firstname + ' ' + currentUser.surname}}</button>
+      <div ngbDropdownMenu>
+        <button class="btn btn-light dropdown-item" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
