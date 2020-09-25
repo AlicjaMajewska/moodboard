@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {DailyMoodContainerComponent} from './daily-mood-container.component';
+import { DailyMoodContainerComponent } from './daily-mood-container.component';
 
 describe('DailyMoodContainerComponent', () => {
   let component: DailyMoodContainerComponent;

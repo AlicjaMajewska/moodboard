@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Mood} from "./mood";
-import {MoodService} from "./mood.service";
+import { Component, OnInit } from '@angular/core';
+import { Mood } from "./mood";
+import { MoodService } from "./mood.service";
 
 @Component({
   selector: 'mb-root',

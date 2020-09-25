@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {Mood, MoodCategory, MoodTransition} from "../mood";
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Mood, MoodCategory, MoodTransition } from "../mood";
 
 @Component({
   selector: 'mb-mood-transition',
@@ -19,11 +19,11 @@ export class MoodTransitionComponent {
     return `linear-gradient(to bottom, ${colorsAsText})`;
   }
 
-  private getColor(mood: Mood) {
-    return MoodCategory.color(mood.category);
-  }
-
   shouldShowLastMood() {
     return this.isLast && this.moodTransition.initial !== this.moodTransition.finishing;
+  }
+
+  private getColor(mood: Mood) {
+    return MoodCategory.color(mood.category);
   }
 }

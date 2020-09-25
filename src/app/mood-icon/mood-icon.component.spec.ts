@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {MoodIconComponent} from './mood-icon.component';
+import { MoodIconComponent } from './mood-icon.component';
 
 describe('MoodIconComponent', () => {
   let component: MoodIconComponent;

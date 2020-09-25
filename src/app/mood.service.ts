@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Mood} from "./mood";
-import {MoodTestingFactory} from "./mood-testing-factory";
+import { Injectable } from '@angular/core';
+import { Mood } from "./mood";
+import { MoodTestingFactory } from "./mood-testing-factory";
 import * as moment from 'moment';
 
 @Injectable({

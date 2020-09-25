@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import * as moment from "moment";
-import {Mood} from "../mood";
+import { Mood } from "../mood";
 
 @Component({
   selector: 'mb-mood-summary',

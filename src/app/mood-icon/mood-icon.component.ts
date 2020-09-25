@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {MoodCategory} from "../mood";
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { MoodCategory } from "../mood";
 
 @Component({
   selector: 'mb-mood-icon',

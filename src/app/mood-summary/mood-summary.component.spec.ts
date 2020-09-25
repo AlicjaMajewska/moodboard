@@ -8,9 +8,9 @@ describe('MoodSummaryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MoodSummaryComponent ]
+      declarations: [MoodSummaryComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

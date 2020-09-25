@@ -1,6 +1,6 @@
-import {Mood, MoodCategory} from "./mood";
+import { Mood, MoodCategory } from "./mood";
 import * as moment from "moment";
-import {Duration} from "moment";
+import { Duration } from "moment";
 
 export class MoodTestingFactory {
 

@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {MoodService} from "../mood.service";
+import { Component, OnInit } from '@angular/core';
+import { MoodService } from "../mood.service";
 import * as moment from 'moment'
-import {Mood} from "../mood";
-import {ActivatedRoute} from "@angular/router";
+import { Mood } from "../mood";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'mb-daily-mood-container',

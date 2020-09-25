@@ -1,7 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormBuilder, Validators} from "@angular/forms";
-import {MoodCategory} from "../mood";
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, Validators } from "@angular/forms";
+import { MoodCategory } from "../mood";
 
 @Component({
   selector: 'mb-new-mood',

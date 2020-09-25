@@ -8,9 +8,9 @@ describe('MoodTransitionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MoodTransitionComponent ]
+      declarations: [MoodTransitionComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

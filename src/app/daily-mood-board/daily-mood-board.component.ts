@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {Mood} from "../mood";
+import { Component, Input } from '@angular/core';
+import { Mood } from "../mood";
 
 @Component({
   selector: 'mb-daily-mood-board',

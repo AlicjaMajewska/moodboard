@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MontlyMoodBoardComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

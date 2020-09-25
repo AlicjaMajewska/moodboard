@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {Mood, MoodTransition} from '../mood';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Mood, MoodTransition } from '../mood';
 
 @Component({
   selector: 'mb-mood-cell',
@@ -10,16 +10,23 @@ import {Mood, MoodTransition} from '../mood';
 export class MoodCellComponent {
 
   @Input() shortened: boolean;
+  moodTransitions = [];
+  private fullTimeRange = 0;
 
   private _moods: Mood[] = [];
-  private fullTimeRange = 0;
-  moodTransitions = [];
 
   @Input()
   set moods(newMoods: Mood[]) {
     this._moods = newMoods;
     this.moodTransitions = this.mapToMoodTransitions();
     this.fullTimeRange = this.calculateFullTimeRange();
+  }
+
+  calculateHeightOfTransition(moodTransition: MoodTransition): string {
+    if (this.fullTimeRange == 0) {
+      return '100%'
+    }
+    return (moodTransition.durationInSeconds * 100 / this.fullTimeRange) + '%';
   }
 
   private calculateFullTimeRange(): number {
@@ -41,12 +48,5 @@ export class MoodCellComponent {
       moodTransitions.push(MoodTransition.of(this._moods[i], this._moods[i + 1]));
     }
     return moodTransitions;
-  }
-
-  calculateHeightOfTransition(moodTransition: MoodTransition): string {
-    if (this.fullTimeRange == 0) {
-      return '100%'
-    }
-    return (moodTransition.durationInSeconds * 100 / this.fullTimeRange) + '%';
   }
 }

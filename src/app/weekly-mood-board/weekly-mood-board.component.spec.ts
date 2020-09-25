@@ -8,9 +8,9 @@ describe('WeeklyMoodBoardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WeeklyMoodBoardComponent ]
+      declarations: [WeeklyMoodBoardComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

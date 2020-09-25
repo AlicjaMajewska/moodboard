@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {NewMoodComponent} from '../new-mood/new-mood.component';
-import {MoodService} from "../mood.service";
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NewMoodComponent } from '../new-mood/new-mood.component';
+import { MoodService } from "../mood.service";
 
 @Component({
   selector: 'mb-insert-mood',

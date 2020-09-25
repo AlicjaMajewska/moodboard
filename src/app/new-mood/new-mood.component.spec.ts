@@ -8,9 +8,9 @@ describe('NewMoodComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewMoodComponent ]
+      declarations: [NewMoodComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
