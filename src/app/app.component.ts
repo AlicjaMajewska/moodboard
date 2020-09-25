@@ -15,7 +15,4 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  displayNewMood(mood: Mood) {
-    this.moodService.displayNewMood(mood); // TODO move to navigation?
-  }
 }

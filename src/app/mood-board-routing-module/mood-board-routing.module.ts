@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 import { WeeklyMoodBoardComponent } from "../weekly-mood-board/weekly-mood-board.component";
 import { DailyMoodContainerComponent } from "../daily-mood-container/daily-mood-container.component";
+import { YearlyMoodBoardContainerComponent } from "../yearly-mood-board/yearly-mood-board-container.component";
 
 const routes: Routes = [
+  {path: 'yearly-board', component: YearlyMoodBoardContainerComponent},
   {path: 'weekly-board', component: WeeklyMoodBoardComponent},
   {path: 'daily-board/:date', component: DailyMoodContainerComponent},
   {path: 'daily-board', component: DailyMoodContainerComponent},

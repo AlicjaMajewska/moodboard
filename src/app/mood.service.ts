@@ -22,7 +22,17 @@ export class MoodService {
     const startDate = moment(date)
     const endDate = moment(date).add(1, 'day')
 
+    return this.filterByRange(startDate, endDate);
+  }
+
+  private filterByRange(startDate: moment.Moment, endDate: moment.Moment) {
     return this.moods.filter(it => moment(it.date).isBetween(startDate, endDate));
   }
 
+  getMoodsByYear(date: Date) {
+    const startDate = moment(date)
+    const endDate = moment(date).add(1, 'year')
+
+    return this.filterByRange(startDate, endDate);
+  }
 }

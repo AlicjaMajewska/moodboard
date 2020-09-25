@@ -9,7 +9,7 @@ import { MoodCellComponent } from './mood-cell/mood-cell.component';
 import { DailyMoodBoardComponent } from './daily-mood-board/daily-mood-board.component';
 import { WeeklyMoodBoardComponent } from './weekly-mood-board/weekly-mood-board.component';
 import { MontlyMoodBoardComponent } from './montly-mood-board/montly-mood-board.component';
-import { YearlyMoodBoardComponent } from './yearly-mood-board/yearly-mood-board.component';
+import { YearlyMoodBoardContainerComponent } from './yearly-mood-board/yearly-mood-board-container.component';
 import { InsertMoodComponent } from './insert-mood/insert-mood.component';
 import { NewMoodComponent } from './new-mood/new-mood.component';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -26,6 +26,8 @@ import { MoodIconComponent } from './mood-icon/mood-icon.component';
 import { MoodBoardRoutingModule } from "./mood-board-routing-module/mood-board-routing.module";
 import { HotkeyModule } from "angular2-hotkeys";
 import { DailyMoodContainerComponent } from './daily-mood-container/daily-mood-container.component';
+import { ChartsModule } from 'ng2-charts';
+import { YearlyChartComponent } from './yearly-chart/yearly-chart.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +36,14 @@ import { DailyMoodContainerComponent } from './daily-mood-container/daily-mood-c
     DailyMoodBoardComponent,
     WeeklyMoodBoardComponent,
     MontlyMoodBoardComponent,
-    YearlyMoodBoardComponent,
+    YearlyMoodBoardContainerComponent,
     InsertMoodComponent,
     NewMoodComponent,
     MoodTransitionComponent,
     MoodSummaryComponent,
     MoodIconComponent,
-    DailyMoodContainerComponent
+    DailyMoodContainerComponent,
+    YearlyChartComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { DailyMoodContainerComponent } from './daily-mood-container/daily-mood-c
     MatButtonModule,
     ReactiveFormsModule,
     NgbModule,
-    MoodBoardRoutingModule
+    MoodBoardRoutingModule,
+    ChartsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
