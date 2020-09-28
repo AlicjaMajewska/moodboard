@@ -1,3 +1,4 @@
 <section class="container full-height">
- <mb-yearly-chart [moodsByYear]="moodsByYear"></mb-yearly-chart>
+ <mb-yearly-chart *ngIf="isStatisticsComponentVisible()" [moodsByYear]="moodsByYear"></mb-yearly-chart>
+ <mb-yearly-mood-board-in-pixels *ngIf="isPixelsComponentVisible()" [moodsByYear]="moodsByYear"></mb-yearly-mood-board-in-pixels>
 </section>

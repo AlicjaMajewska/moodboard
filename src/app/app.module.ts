@@ -29,6 +29,7 @@ import { DailyMoodContainerComponent } from './daily-mood-container/daily-mood-c
 import { ChartsModule } from 'ng2-charts';
 import { YearlyChartComponent } from './yearly-chart/yearly-chart.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { YearlyMoodBoardInPixelsComponent } from './yearly-mood-board-in-pixels/yearly-mood-board-in-pixels.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     MoodIconComponent,
     DailyMoodContainerComponent,
     YearlyChartComponent,
-    NavigationComponent
+    NavigationComponent,
+    YearlyMoodBoardInPixelsComponent
   ],
   imports: [
     BrowserModule,
