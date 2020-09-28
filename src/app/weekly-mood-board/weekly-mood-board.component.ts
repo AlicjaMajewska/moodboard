@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {Mood} from "../mood";
-import {groupBy} from "lodash";
-import * as moment from 'moment'
-import {KeyValue} from "@angular/common";
-import {MoodService} from "../mood.service";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Mood } from '../mood';
+import { groupBy } from 'lodash';
+import * as moment from 'moment';
+import { KeyValue } from '@angular/common';
+import { MoodService } from '../mood.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mb-weekly-mood-board',
@@ -38,9 +38,9 @@ export class WeeklyMoodBoardComponent implements OnInit {
     this.router.navigate(['daily-board', moment(selectedDay).format('MM-DD-YYYY')]);
   }
 
-  private addMissingDaysAsEmptyArray() {
+  private addMissingDaysAsEmptyArray(): void {
     for (let i = 0; i < 7; i++) {
-      let missingDate = moment(this.startOfWeek).add(i, 'days').toDate().toString();
+      const missingDate = moment(this.startOfWeek).add(i, 'days').toDate().toString();
       if (!this.moodsByDates.hasOwnProperty(missingDate)) {
         this.moodsByDates[missingDate] = [];
       }

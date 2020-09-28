@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MoodCategory } from "../mood";
+import { MoodCategoryUtil } from '../mood-category-util';
+import { MoodCategory } from '../mood';
 
 @Component({
   selector: 'mb-mood-icon',
@@ -13,10 +14,10 @@ export class MoodIconComponent {
   @Input() category: MoodCategory;
 
   nameOfMood(moodCategory: MoodCategory): string {
-    return MoodCategory.moodName(moodCategory);
+    return MoodCategoryUtil.moodName(moodCategory);
   }
 
   pathToMoodIcon(moodCategory: MoodCategory): string {
-    return '/assets/icons/emoji_gif_100px/' + MoodCategory.filename(moodCategory);
+    return '/assets/icons/emoji_gif_100px/' + MoodCategoryUtil.filename(moodCategory);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MoodService } from "../mood.service";
-import { Mood } from "../mood";
-import * as moment from "moment";
+import { MoodService } from '../mood.service';
+import { Mood } from '../mood';
+import * as moment from 'moment';
 
 @Component({
   selector: 'mb-yearly-mood-board',

@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, Validators } from "@angular/forms";
-import { MoodCategory } from "../mood";
+import { FormBuilder, Validators } from '@angular/forms';
+import { MoodCategoryUtil } from '../mood-category-util';
+import { MoodCategory } from '../mood';
 
 @Component({
   selector: 'mb-new-mood',
@@ -11,7 +12,7 @@ import { MoodCategory } from "../mood";
 export class NewMoodComponent implements OnInit {
 
   moodForm;
-  moodCategories: MoodCategory[] = MoodCategory.values();
+  moodCategories: MoodCategoryUtil[] = MoodCategoryUtil.values();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private matDialogRef: MatDialogRef<NewMoodComponent>,
@@ -26,7 +27,7 @@ export class NewMoodComponent implements OnInit {
     });
   }
 
-  save() {
+  save(): void {
     this.moodForm.patchValue({
       date: new Date()
     });
@@ -35,7 +36,7 @@ export class NewMoodComponent implements OnInit {
   }
 
   nameOfMood(moodCategory: MoodCategory): string {
-    return MoodCategory.moodName(moodCategory);
+    return MoodCategoryUtil.moodName(moodCategory);
   }
 
   selectMood(moodCategory: MoodCategory): void {

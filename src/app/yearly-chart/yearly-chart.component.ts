@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ChartOptions, ChartType } from "chart.js";
-import { Mood, MoodCategory } from "../mood";
-import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from "ng2-charts";
+import { ChartOptions, ChartType } from 'chart.js';
+import { Mood } from '../mood';
+import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
+import { MoodCategoryUtil } from '../mood-category-util';
 
 @Component({
   selector: 'mb-yearly-chart',
@@ -32,11 +33,11 @@ export class YearlyChartComponent implements OnInit {
 
   ngOnInit(): void {
 // @ts-ignore
-    this.pieChartLabels = MoodCategory.values().map(it => MoodCategory.moodName(it)).map(it => it.split(' '));
-    this.pieChartData = MoodCategory.values().map(color => this.moodsByYear.filter(mood => mood.category === color).length);
+    this.pieChartLabels = MoodCategoryUtil.values().map(it => MoodCategoryUtil.moodName(it)).map(it => it.split(' '));
+    this.pieChartData = MoodCategoryUtil.values().map(color => this.moodsByYear.filter(mood => mood.category === color).length);
     this.pieChartColors = [
       {
-        backgroundColor: MoodCategory.values(),
+        backgroundColor: MoodCategoryUtil.values(),
       },
     ];
     monkeyPatchChartJsTooltip();

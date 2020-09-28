@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MoodService } from "../mood.service";
-import * as moment from 'moment'
-import { Mood } from "../mood";
-import { ActivatedRoute } from "@angular/router";
+import { MoodService } from '../mood.service';
+import * as moment from 'moment';
+import { Mood } from '../mood';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'mb-daily-mood-container',
@@ -11,16 +11,17 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class DailyMoodContainerComponent implements OnInit {
   date: Date;
-  moodsOfDay: Mood[] = []
+  moodsOfDay: Mood[] = [];
 
   constructor(private moodService: MoodService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      /* tslint:disable:no-string-literal */
       const dateAsParam = params['date'];
-      console.log(moment(dateAsParam, "MM-DD-YYYY").toDate());
-      this.date = dateAsParam ? moment(dateAsParam, 'MM-DD-YYYY').toDate() : moment().startOf('day').toDate()
+      /* tslint:enable:no-string-literal */
+      this.date = dateAsParam ? moment(dateAsParam, 'MM-DD-YYYY').toDate() : moment().startOf('day').toDate();
       this.moodsOfDay = this.moodService.getMoodsByDate(this.date);
     });
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from "rxjs";
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'mb-navigation',
@@ -9,13 +9,15 @@ import { Observable, of } from "rxjs";
 export class NavigationComponent implements OnInit {
   showMenu = false;
   currentUser$: Observable<any>;
-  constructor() { }
 
-  ngOnInit(): void {
-    this.currentUser$ = of()//this.authService.selectCurrentUser();
+  constructor() {
   }
 
-  logout() {
+  ngOnInit(): void {
+    this.currentUser$ = of(); // this.authService.selectCurrentUser();
+  }
+
+  logout(): void {
     // this.authService.logout();
   }
 }

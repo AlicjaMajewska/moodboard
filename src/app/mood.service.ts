@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Mood } from "./mood";
-import { MoodTestingFactory } from "./mood-testing-factory";
+import { Mood } from './mood';
+import { MoodTestingFactory } from './mood-testing-factory';
 import * as moment from 'moment';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class MoodService {
   moods: Mood[] = [];
 
   constructor() {
-    this.moods = MoodTestingFactory.createMoods()
+    this.moods = MoodTestingFactory.createMoods();
   }
 
   addNewMood(mood: Mood): void {
@@ -19,19 +19,19 @@ export class MoodService {
   }
 
   getMoodsByDate(date: Date): Mood[] {
-    const startDate = moment(date)
-    const endDate = moment(date).add(1, 'day')
+    const startDate = moment(date);
+    const endDate = moment(date).add(1, 'day');
 
     return this.filterByRange(startDate, endDate);
   }
 
-  private filterByRange(startDate: moment.Moment, endDate: moment.Moment) {
+  private filterByRange(startDate: moment.Moment, endDate: moment.Moment): Mood[] {
     return this.moods.filter(it => moment(it.date).isBetween(startDate, endDate));
   }
 
-  getMoodsByYear(date: Date) {
-    const startDate = moment(date)
-    const endDate = moment(date).add(1, 'year')
+  getMoodsByYear(date: Date): Mood[] {
+    const startDate = moment(date);
+    const endDate = moment(date).add(1, 'year');
 
     return this.filterByRange(startDate, endDate);
   }

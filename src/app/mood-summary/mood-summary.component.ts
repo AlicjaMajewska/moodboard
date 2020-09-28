@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import * as moment from "moment";
-import { Mood } from "../mood";
+import * as moment from 'moment';
+import { Mood } from '../mood';
 
 @Component({
   selector: 'mb-mood-summary',
@@ -12,7 +12,7 @@ export class MoodSummaryComponent {
   @Input() mood: Mood;
 
   time(date: Date): string {
-    return moment(date).format('LT')
+    return moment(date).format('LT');
   }
 
 }

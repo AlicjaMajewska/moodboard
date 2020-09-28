@@ -21,7 +21,7 @@ export class Mood {
 export class MoodTransition {
   initial: Mood;
   finishing: Mood;
-  durationInSeconds: number
+  durationInSeconds: number;
 
   constructor(initial: Mood, finishing: Mood) {
     this.initial = initial;
@@ -50,44 +50,3 @@ export enum MoodCategory {
   ANGRY = '#d91313',
 }
 
-export namespace MoodCategory {
-
-  export function color(moodCategory: MoodCategory): string {
-    return moodCategory.toString();
-  }
-
-  export function moodName(moodCategory: MoodCategory): string {
-    return Object.keys(MoodCategory)
-      .find(k => MoodCategory[k] == moodCategory)
-      .toLowerCase()
-      .replace(/_/g, ' ');
-  }
-
-  export function values() {
-    return Object.keys(MoodCategory).map(k => MoodCategory[k]).filter(it => typeof it !== "function")
-  }
-
-  export function filename(moodCategory: MoodCategory): string {
-    switch (moodCategory) {
-      case MoodCategory.ANGRY:
-        return 'emoji_27.gif';
-      case MoodCategory.HAPPY:
-        return 'emoji_18.gif'
-      case MoodCategory.SICK:
-        return 'emoji_6.gif';
-      case MoodCategory.IN_LOVE:
-        return 'emoji_11.gif'
-      case MoodCategory.OVER_THE_MOON:
-        return 'emoji_3.gif'
-      case MoodCategory.PRODUCTIVE:
-        return 'emoji_10.gif';
-      case MoodCategory.SAD:
-        return 'emoji_14.gif';
-      case MoodCategory.SLEEPY:
-        return 'emoji_19.gif'
-      default:
-        return 'emoji_7.gif';
-    }
-  }
-
-}

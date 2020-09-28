@@ -10,42 +10,39 @@ import { Mood, MoodTransition } from '../mood';
 export class MoodCellComponent {
 
   @Input() shortened: boolean;
-  moodTransitions = [];
-  private fullTimeRange = 0;
-
-  private _moods: Mood[] = [];
+  moodTransitions: MoodTransition[] = [];
+  private fullTimeRange: number;
 
   @Input()
   set moods(newMoods: Mood[]) {
-    this._moods = newMoods;
-    this.moodTransitions = this.mapToMoodTransitions();
-    this.fullTimeRange = this.calculateFullTimeRange();
+    this.moodTransitions = this.mapToMoodTransitions(newMoods);
+    this.fullTimeRange = this.calculateFullTimeRange(newMoods);
   }
 
   calculateHeightOfTransition(moodTransition: MoodTransition): string {
-    if (this.fullTimeRange == 0) {
-      return '100%'
+    if (this.fullTimeRange === 0) {
+      return '100%';
     }
     return (moodTransition.durationInSeconds * 100 / this.fullTimeRange) + '%';
   }
 
-  private calculateFullTimeRange(): number {
-    if (this._moods.length <= 1) {
+  private calculateFullTimeRange(newMoods: Mood[]): number {
+    if (newMoods.length <= 1) {
       return 0;
     }
-    const firstMoodTime = this._moods[0].date.getTime();
-    const lastMoodTime = this._moods[this._moods.length - 1].date.getTime();
+    const firstMoodTime = newMoods[0].date.getTime();
+    const lastMoodTime = newMoods[newMoods.length - 1].date.getTime();
 
     return lastMoodTime - firstMoodTime;
   }
 
-  private mapToMoodTransitions(): MoodTransition[] {
-    const moodTransitions = [];
-    if (this._moods.length === 1) {
-      moodTransitions.push(MoodTransition.ofSingleMood(this._moods[0]));
+  private mapToMoodTransitions(newMoods: Mood[]): MoodTransition[] {
+    const moodTransitions: MoodTransition[] = [];
+    if (newMoods.length === 1) {
+      moodTransitions.push(MoodTransition.ofSingleMood(newMoods[0]));
     }
-    for (let i = 0; i + 1 < this._moods.length; i++) {
-      moodTransitions.push(MoodTransition.of(this._moods[i], this._moods[i + 1]));
+    for (let i = 0; i + 1 < newMoods.length; i++) {
+      moodTransitions.push(MoodTransition.of(newMoods[i], newMoods[i + 1]));
     }
     return moodTransitions;
   }
