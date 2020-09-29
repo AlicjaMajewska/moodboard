@@ -1,14 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { MoodCellComponent } from './mood-cell/mood-cell.component';
 import { DailyMoodBoardComponent } from './daily-mood-board/daily-mood-board.component';
 import { WeeklyMoodBoardComponent } from './weekly-mood-board/weekly-mood-board.component';
-import { MontlyMoodBoardComponent } from './montly-mood-board/montly-mood-board.component';
+import { MonthlyMoodBoardComponent } from './montly-mood-board/monthly-mood-board.component';
 import { YearlyMoodBoardContainerComponent } from './yearly-mood-board/yearly-mood-board-container.component';
 import { InsertMoodComponent } from './insert-mood/insert-mood.component';
 import { NewMoodComponent } from './new-mood/new-mood.component';
@@ -30,6 +29,7 @@ import { ChartsModule } from 'ng2-charts';
 import { YearlyChartComponent } from './yearly-chart/yearly-chart.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { YearlyMoodBoardInPixelsComponent } from './yearly-mood-board-in-pixels/yearly-mood-board-in-pixels.component';
+import { MonthlyMoodBoardContainerComponent } from './monthly-mood-board-container/monthly-mood-board-container.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { YearlyMoodBoardInPixelsComponent } from './yearly-mood-board-in-pixels/
     MoodCellComponent,
     DailyMoodBoardComponent,
     WeeklyMoodBoardComponent,
-    MontlyMoodBoardComponent,
+    MonthlyMoodBoardComponent,
     YearlyMoodBoardContainerComponent,
     InsertMoodComponent,
     NewMoodComponent,
@@ -47,13 +47,13 @@ import { YearlyMoodBoardInPixelsComponent } from './yearly-mood-board-in-pixels/
     DailyMoodContainerComponent,
     YearlyChartComponent,
     NavigationComponent,
-    YearlyMoodBoardInPixelsComponent
+    YearlyMoodBoardInPixelsComponent,
+    MonthlyMoodBoardContainerComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     MatDialogModule,
     HotkeyModule.forRoot(),
     MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MontlyMoodBoardComponent } from './montly-mood-board.component';
+import { MonthlyMoodBoardComponent } from './monthly-mood-board.component';
 
-describe('MontlyMoodBoardComponent', () => {
-  let component: MontlyMoodBoardComponent;
-  let fixture: ComponentFixture<MontlyMoodBoardComponent>;
+describe('MonthlyMoodBoardComponent', () => {
+  let component: MonthlyMoodBoardComponent;
+  let fixture: ComponentFixture<MonthlyMoodBoardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MontlyMoodBoardComponent]
+      declarations: [MonthlyMoodBoardComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MontlyMoodBoardComponent);
+    fixture = TestBed.createComponent(MonthlyMoodBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
