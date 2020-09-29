@@ -9,7 +9,7 @@ export class MoodCategoryUtil {
   static moodName(moodCategory: MoodCategory): string {
     const moodNameOptional: string | undefined = Object.keys(MoodCategory)
       .find(k => MoodCategory[k] === moodCategory);
-    return moodNameOptional || 'unknown'.toLowerCase()
+    return (moodNameOptional || 'unknown').toLowerCase()
       .replace(/_/g, ' ');
   }
 

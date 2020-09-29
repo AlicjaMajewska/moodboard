@@ -1,4 +1,12 @@
 <section class="container full-height">
- <mb-yearly-chart *ngIf="isStatisticsComponentVisible()" [moodsByYear]="moodsByYear"></mb-yearly-chart>
- <mb-yearly-mood-board-in-pixels *ngIf="isPixelsComponentVisible()" [moodsByYear]="moodsByYear"></mb-yearly-mood-board-in-pixels>
+  <div style="display: flex; flex-direction: row; justify-content: center; padding-top: 10px">
+    <button (click)="goToPixels()" style="margin-right: 10px" [disabled]="isPixelsComponentVisible()" mat-raised-button>Show year in pixels
+    </button>
+    <button (click)="goToStatistics()" [disabled]="isStatisticsComponentVisible()" mat-raised-button>Show yearly
+      statistics
+    </button>
+  </div>
+  <mb-yearly-chart *ngIf="isStatisticsComponentVisible()" [moodsByYear]="moodsByYear"></mb-yearly-chart>
+  <mb-yearly-mood-board-in-pixels *ngIf="isPixelsComponentVisible()"
+                                  [moodsByYear]="moodsByYear"></mb-yearly-mood-board-in-pixels>
 </section>

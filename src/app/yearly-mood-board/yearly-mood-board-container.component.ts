@@ -34,4 +34,11 @@ export class YearlyMoodBoardContainerComponent implements OnInit {
     return this.shownComponent === ShownYearlyComponent.STATISTICS;
   }
 
+  goToStatistics(): void {
+    this.shownComponent = ShownYearlyComponent.STATISTICS;
+  }
+
+  goToPixels(): void {
+    this.shownComponent = ShownYearlyComponent.PIXELS;
+  }
 }
