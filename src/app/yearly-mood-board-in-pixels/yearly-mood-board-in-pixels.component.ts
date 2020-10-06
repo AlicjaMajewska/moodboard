@@ -1,13 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Mood } from '../mood';
 import * as moment from 'moment';
+import { DailyMoodAsPopupComponent } from '../daily-mood-as-popup/daily-mood-as-popup.component';
+import { MoodService } from '../mood.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'mb-yearly-mood-board-in-pixels',
   templateUrl: './yearly-mood-board-in-pixels.component.html',
   styleUrls: ['./yearly-mood-board-in-pixels.component.sass']
 })
-export class YearlyMoodBoardInPixelsComponent implements OnInit {
+export class YearlyMoodBoardInPixelsComponent {
+
   private readonly monthShortNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   @Input() moodsByYear: Mood[];
   date = new Date(); // TODO
@@ -15,7 +19,8 @@ export class YearlyMoodBoardInPixelsComponent implements OnInit {
   numberOfDaysInMonth = Array(31 + 1);
   numberOfMonthsInYear = Array(12 + 1);
 
-  ngOnInit(): void {
+
+  constructor(private moodService: MoodService, private dialog: MatDialog) {
   }
 
   isMonthNameCell(i): boolean {
@@ -27,10 +32,35 @@ export class YearlyMoodBoardInPixelsComponent implements OnInit {
   }
 
   getMoodsOfADay(dayOfYear: number): Mood[] {
-    return this.moodsByYear.filter(it => moment(it.date).dayOfYear() === dayOfYear);
+    return this.moodsByYear.filter(it => moment(it.date).dayOfYear() === dayOfYear); // TODO do serwisu
   }
 
-  generateGridClassesForSingleDay(index): string {
+  openDayInPopUp(index: number): void {
+    if (!this.dayHasSomeMoodInserted(index)) {
+      return;
+    }
+    const selectedDate = this.getDateOutOfIndex(index);
+    this.dialog.open(DailyMoodAsPopupComponent,
+      {
+        height: '90vh',
+        width: '70vw',
+        data: {
+          date: selectedDate,
+          moodsOfDay: this.moodService.getMoodsByDate(selectedDate)
+        }
+      },
+    );
+  }
+
+  dayHasSomeMoodInserted(index: number): boolean {
+    if (this.isMonthNameCell(index)) {
+      return false;
+    }
+    const selectedDate = this.getDateOutOfIndex(index);
+    return this.moodService.getMoodsByDate(selectedDate).length !== 0;
+  }
+
+  generateGridClassesForSingleDay(index: number): string {
     if (this.isMonthNameCell(index)) {
       return '';
     }

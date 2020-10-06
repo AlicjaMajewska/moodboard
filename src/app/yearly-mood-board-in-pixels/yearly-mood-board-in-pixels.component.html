@@ -1,8 +1,9 @@
 <div class="pixels">
   <span *ngFor="let item of numberOfDaysInMonth; let i = index;" class="pixel bordered"
         [ngStyle]="{'font-weight': i === 0 ? 'bold' : 'normal'}">{{i > 0 ? i : date.getFullYear()}}</span>
-  <span [style.background-image]="generateGridClassesForSingleDay(i)"
-        *ngFor="let item of numberOfDaysInYear; let i = index;" class="pixel bordered">
+  <span [style.background-image]="generateGridClassesForSingleDay(i)" (click)="openDayInPopUp(i)"
+        *ngFor="let item of numberOfDaysInYear; let i = index;" class="pixel bordered"
+        [style.cursor]="dayHasSomeMoodInserted(i) ? 'pointer': 'auto'">
     <span *ngIf="isMonthNameCell(i)"> {{getMonthName(i)}}</span>
   </span>
 </div>

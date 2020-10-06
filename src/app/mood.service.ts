@@ -19,8 +19,8 @@ export class MoodService {
   }
 
   getMoodsByDate(date: Date): Mood[] {
-    const startDate = moment(date);
-    const endDate = moment(date).add(1, 'day');
+    const startDate = moment(date).startOf('day');
+    const endDate = moment(startDate).add(1, 'day');
 
     return this.filterByRange(startDate, endDate);
   }
@@ -30,15 +30,15 @@ export class MoodService {
   }
 
   getMoodsByYear(date: Date): Mood[] {
-    const startDate = moment(date);
-    const endDate = moment(date).add(1, 'year');
+    const startDate = moment(date).startOf('day');
+    const endDate = moment(startDate).add(1, 'year');
 
     return this.filterByRange(startDate, endDate);
   }
 
   getMoodsByWeek(startOfWeek: Date): Mood[] {
-    const startDate = moment(startOfWeek);
-    const endDate = moment(startOfWeek).add(1, 'week');
+    const startDate = moment(startOfWeek).startOf('day');
+    const endDate = moment(startDate).add(1, 'week');
 
     return this.filterByRange(startDate, endDate);
   }

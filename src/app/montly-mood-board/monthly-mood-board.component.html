@@ -4,6 +4,7 @@
   <span *ngFor="let item of namesOfDaysInWeek" class="month-cell-name bordered">{{item}}</span>
   <span *ngFor="let item of offsetCells" class="month-cell offset-cell bordered"></span>
   <span [style.background-image]="generateGridClassesForSingleDay(i)" (click)="openDayInPopUp(i)"
+        [style.cursor]="dayHasSomeMoodInserted(i) ? 'pointer' : 'auto'"
         *ngFor="let item of daysInMonth; let i = index;" class="month-cell bordered">
     {{calculateNumberOfDay(i)}}
   </span>

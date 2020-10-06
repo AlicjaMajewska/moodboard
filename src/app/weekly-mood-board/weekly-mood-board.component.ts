@@ -35,7 +35,16 @@ export class WeeklyMoodBoardComponent implements OnInit {
     return new Date(dateAsString);
   }
 
+  dayHasSomeMoodInserted(selectedDay: string): boolean {
+    const selectedDate = new Date(selectedDay);
+    const moodsByDate = this.moodService.getMoodsByDate(selectedDate);
+    return moodsByDate.length !== 0;
+  }
+
   openDayInPopUp(selectedDay: string): void {
+    if (!this.dayHasSomeMoodInserted(selectedDay)) {
+      return;
+    }
     const selectedDate = new Date(selectedDay);
     this.dialog.open(DailyMoodAsPopupComponent,
       {

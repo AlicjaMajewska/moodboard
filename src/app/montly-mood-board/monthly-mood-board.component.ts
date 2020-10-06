@@ -36,10 +36,16 @@ export class MonthlyMoodBoardComponent {
     const date = this.getDateOfIndex(index);
     const moodsOfADay = this.moodService.getMoodsByDate(date);
     if (moodsOfADay.length === 0) {
-      return 'linear-gradient(to bottom, #dddddd, #f5f5f5)';
+      return '';
     }
     const colorsAsText = this.getColorsOf(moodsOfADay);
     return `linear-gradient(to bottom, ${colorsAsText})`;
+  }
+
+  dayHasSomeMoodInserted(index: number): boolean {
+    const date = this.getDateOfIndex(index);
+    const moodsOfADay = this.moodService.getMoodsByDate(date);
+    return moodsOfADay.length !== 0;
   }
 
   private getDateOfIndex(index: number): Date {
@@ -65,6 +71,9 @@ export class MonthlyMoodBoardComponent {
   }
 
   openDayInPopUp(index: number): void {
+    if (!this.dayHasSomeMoodInserted(index)) {
+      return;
+    }
     const selectedDate = this.getDateOfIndex(index);
     this.dialog.open(DailyMoodAsPopupComponent,
       {
