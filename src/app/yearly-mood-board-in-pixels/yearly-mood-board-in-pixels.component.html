@@ -1,5 +1,6 @@
 <div class="pixels">
-  <span *ngFor="let item of numberOfDaysInMonth; let i = index;" class="pixel bordered">{{i > 0 ? i : date.getFullYear()}}</span>
+  <span *ngFor="let item of numberOfDaysInMonth; let i = index;" class="pixel bordered"
+        [ngStyle]="{'font-weight': i === 0 ? 'bold' : 'normal'}">{{i > 0 ? i : date.getFullYear()}}</span>
   <span [style.background-image]="generateGridClassesForSingleDay(i)"
         *ngFor="let item of numberOfDaysInYear; let i = index;" class="pixel bordered">
     <span *ngIf="isMonthNameCell(i)"> {{getMonthName(i)}}</span>
