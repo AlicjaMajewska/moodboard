@@ -1,8 +1,10 @@
 <section class="container full-height">
   <div (click)="navigateToDailyMoodBoard(moodsByDate.key)"
        *ngFor="let moodsByDate of moodsByDates | keyvalue: dateAscOrder" class="daily-mood-container">
+    <p style="text-align: center; margin-bottom: 0">{{dateOf(moodsByDate.key) | date: 'EEEE'}}</p>
+    <p style="text-align: center; margin-bottom: 0">{{dateOf(moodsByDate.key) | date: 'dd.MM.yyyy'}}</p>
     <mb-daily-mood-board [date]="dateOf(moodsByDate.key)" [moodsOfDay]="moodsByDate.value" [shortened]="true"
-                         class="full-height"></mb-daily-mood-board>
+                         style="height: calc(100% - 2* 24px - 10px); display: flex"></mb-daily-mood-board>
   </div>
 </section>
 

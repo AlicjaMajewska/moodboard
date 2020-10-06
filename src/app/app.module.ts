@@ -30,6 +30,7 @@ import { YearlyChartComponent } from './yearly-chart/yearly-chart.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { YearlyMoodBoardInPixelsComponent } from './yearly-mood-board-in-pixels/yearly-mood-board-in-pixels.component';
 import { MonthlyMoodBoardContainerComponent } from './monthly-mood-board-container/monthly-mood-board-container.component';
+import { DailyMoodAsPopupComponent } from './daily-mood-as-popup/daily-mood-as-popup.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { MonthlyMoodBoardContainerComponent } from './monthly-mood-board-contain
     YearlyChartComponent,
     NavigationComponent,
     YearlyMoodBoardInPixelsComponent,
-    MonthlyMoodBoardContainerComponent
+    MonthlyMoodBoardContainerComponent,
+    DailyMoodAsPopupComponent
   ],
   imports: [
     BrowserModule,

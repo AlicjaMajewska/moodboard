@@ -1,4 +1,6 @@
 <section class="container full-height">
+  <h4 style="align-self: center; margin-bottom: 0">{{date | date: 'EEEE'}}</h4>
+  <h4 style="align-self: center; margin-bottom: 0">{{date | date: 'dd.MM.yyyy'}}</h4>
   <mb-daily-mood-board [date]="date" [moodsOfDay]="moodsOfDay" [shortened]="false"
                        class="full-height"></mb-daily-mood-board>
 </section>

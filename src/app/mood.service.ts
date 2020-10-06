@@ -35,4 +35,11 @@ export class MoodService {
 
     return this.filterByRange(startDate, endDate);
   }
+
+  getMoodsByWeek(startOfWeek: Date): Mood[] {
+    const startDate = moment(startOfWeek);
+    const endDate = moment(startOfWeek).add(1, 'week');
+
+    return this.filterByRange(startDate, endDate);
+  }
 }

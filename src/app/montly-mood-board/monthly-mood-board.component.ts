@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Mood } from '../mood';
 import * as moment from 'moment';
 import { MoodService } from '../mood.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DailyMoodAsPopupComponent } from '../daily-mood-as-popup/daily-mood-as-popup.component';
 
 @Component({
   selector: 'mb-monthly-mood-board',
@@ -17,7 +19,7 @@ export class MonthlyMoodBoardComponent {
   offsetCells: number[] = [];
   numberOfRowsInCalendar = 0;
 
-  constructor(private moodService: MoodService) {
+  constructor(private moodService: MoodService, public dialog: MatDialog) {
   }
 
   @Input()
@@ -31,13 +33,17 @@ export class MonthlyMoodBoardComponent {
   }
 
   generateGridClassesForSingleDay(index: number): string {
-    const date = moment(this.firstDayInMonth).add(index, 'day').toDate();
+    const date = this.getDateOfIndex(index);
     const moodsOfADay = this.moodService.getMoodsByDate(date);
     if (moodsOfADay.length === 0) {
       return 'linear-gradient(to bottom, #dddddd, #f5f5f5)';
     }
     const colorsAsText = this.getColorsOf(moodsOfADay);
     return `linear-gradient(to bottom, ${colorsAsText})`;
+  }
+
+  private getDateOfIndex(index: number): Date {
+    return moment(this.firstDayInMonth).add(index, 'day').toDate();
   }
 
   private getColorsOf(moodsOfADay: Mood[]): string {
@@ -57,4 +63,19 @@ export class MonthlyMoodBoardComponent {
   monthAndYearHeaderName(): string {
     return moment(this.firstDayInMonth).format('MMMM YYYY');
   }
+
+  openDayInPopUp(index: number) {
+    const selectedDate = this.getDateOfIndex(index);
+    const dialogRef = this.dialog.open(DailyMoodAsPopupComponent,
+      {
+        height: '90vh',
+        width: '70vw',
+        data: {
+          date: selectedDate,
+          moodsOfDay: this.moodService.getMoodsByDate(selectedDate)
+        }
+      },
+    );
+  }
+
 }

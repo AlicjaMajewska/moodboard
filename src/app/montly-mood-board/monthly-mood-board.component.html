@@ -1,9 +1,9 @@
 <section class="monthly-mood-board">
-<h3>{{monthAndYearHeaderName()}}</h3>
+<h4>{{monthAndYearHeaderName()}}</h4>
 <div class="monthly-grid" [ngClass]="'monthly-grid-' + numberOfRowsInCalendar + '-rows'">
   <span *ngFor="let item of namesOfDaysInWeek" class="month-cell-name bordered">{{item}}</span>
   <span *ngFor="let item of offsetCells" class="month-cell offset-cell bordered"></span>
-  <span [style.background-image]="generateGridClassesForSingleDay(i)"
+  <span [style.background-image]="generateGridClassesForSingleDay(i)" (click)="openDayInPopUp(i)"
         *ngFor="let item of daysInMonth; let i = index;" class="month-cell bordered">
     {{calculateNumberOfDay(i)}}
   </span>

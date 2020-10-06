@@ -1,0 +1,8 @@
+<h4 mat-dialog-title>{{date | date: 'EEEE'}} {{date | date: 'dd.MM.yyyy'}}</h4>
+<mat-dialog-content class="mat-typography daily-mood-content">
+  <mb-daily-mood-board [date]="date" [shortened]="false" [moodsOfDay]="moodsOfDay"></mb-daily-mood-board>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-dialog-close mat-raised-button>Close</button>
+</mat-dialog-actions>

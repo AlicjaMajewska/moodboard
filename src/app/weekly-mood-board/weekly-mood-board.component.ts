@@ -20,8 +20,8 @@ export class WeeklyMoodBoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.startOfWeek = moment().startOf('week').toDate();
-    const moodsOfWeek = this.moodService.moods; // TODO korzystanie z daty // TODO observable
+    this.startOfWeek = moment().startOf('week').toDate(); // TODO korzystanie z daty jako input
+    const moodsOfWeek = this.moodService.getMoodsByWeek(this.startOfWeek);
     this.moodsByDates = groupBy(moodsOfWeek, mood => this.dateWithoutTime(mood.date));
     this.addMissingDaysAsEmptyArray();
   }

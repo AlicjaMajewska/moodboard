@@ -12,7 +12,7 @@ import { MoodCategory } from '../mood';
 export class NewMoodComponent implements OnInit {
 
   moodForm;
-  moodCategories: MoodCategoryUtil[] = MoodCategoryUtil.values();
+  moodCategories: MoodCategory[] = MoodCategoryUtil.values();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private matDialogRef: MatDialogRef<NewMoodComponent>,
