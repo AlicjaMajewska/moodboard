@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<section *ngIf="!shortened" style="display: flex; flex-direction: column; justify-content: space-between">
+<section *ngIf="!shortened" style="display: flex; flex-direction: column; justify-content: space-between; max-width: calc(100% - 200px)">
   <mb-mood-summary [mood]="moodTransition.initial"></mb-mood-summary>
   <mb-mood-summary *ngIf="shouldShowLastMood()" [mood]="moodTransition.finishing"></mb-mood-summary>
 </section>

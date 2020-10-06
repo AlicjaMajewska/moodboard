@@ -64,9 +64,9 @@ export class MonthlyMoodBoardComponent {
     return moment(this.firstDayInMonth).format('MMMM YYYY');
   }
 
-  openDayInPopUp(index: number) {
+  openDayInPopUp(index: number): void {
     const selectedDate = this.getDateOfIndex(index);
-    const dialogRef = this.dialog.open(DailyMoodAsPopupComponent,
+    this.dialog.open(DailyMoodAsPopupComponent,
       {
         height: '90vh',
         width: '70vw',

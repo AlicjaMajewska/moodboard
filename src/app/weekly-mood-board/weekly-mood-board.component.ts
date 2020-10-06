@@ -4,7 +4,8 @@ import { groupBy } from 'lodash';
 import * as moment from 'moment';
 import { KeyValue } from '@angular/common';
 import { MoodService } from '../mood.service';
-import { Router } from '@angular/router';
+import { DailyMoodAsPopupComponent } from '../daily-mood-as-popup/daily-mood-as-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'mb-weekly-mood-board',
@@ -16,7 +17,7 @@ export class WeeklyMoodBoardComponent implements OnInit {
   moodsByDates: { [date: string]: Mood[]; } = {};
   startOfWeek: Date;
 
-  constructor(private moodService: MoodService, private router: Router) {
+  constructor(private moodService: MoodService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -34,8 +35,18 @@ export class WeeklyMoodBoardComponent implements OnInit {
     return new Date(dateAsString);
   }
 
-  navigateToDailyMoodBoard(selectedDay: string): void {
-    this.router.navigate(['daily-board', moment(selectedDay).format('MM-DD-YYYY')]);
+  openDayInPopUp(selectedDay: string): void {
+    const selectedDate = new Date(selectedDay);
+    this.dialog.open(DailyMoodAsPopupComponent,
+      {
+        height: '90vh',
+        width: '70vw',
+        data: {
+          date: selectedDate,
+          moodsOfDay: this.moodService.getMoodsByDate(selectedDate)
+        }
+      },
+    );
   }
 
   private addMissingDaysAsEmptyArray(): void {
