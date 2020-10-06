@@ -1,7 +1,11 @@
-<div class="monthly-grid monthly-grid-5-columns">
-  <span *ngFor="let item of numberOfDaysInWeek" class="month-cell-name bordered">{{item}}</span>
+<section class="monthly-mood-board">
+<h3>{{monthAndYearHeaderName()}}</h3>
+<div class="monthly-grid" [ngClass]="'monthly-grid-' + numberOfRowsInCalendar + '-rows'">
+  <span *ngFor="let item of namesOfDaysInWeek" class="month-cell-name bordered">{{item}}</span>
+  <span *ngFor="let item of offsetCells" class="month-cell offset-cell bordered"></span>
   <span [style.background-image]="generateGridClassesForSingleDay(i)"
-        *ngFor="let item of numberOfDaysInMonth; let i = index;" class="month-cell bordered">
-    {{i}}
+        *ngFor="let item of daysInMonth; let i = index;" class="month-cell bordered">
+    {{calculateNumberOfDay(i)}}
   </span>
 </div>
+</section>

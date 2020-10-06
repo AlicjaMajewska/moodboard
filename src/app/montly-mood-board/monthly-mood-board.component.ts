@@ -1,28 +1,43 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Mood } from '../mood';
 import * as moment from 'moment';
+import { MoodService } from '../mood.service';
 
 @Component({
   selector: 'mb-monthly-mood-board',
   templateUrl: './monthly-mood-board.component.html',
   styleUrls: ['./monthly-mood-board.component.sass']
 })
-export class MonthlyMoodBoardComponent implements OnInit {
+export class MonthlyMoodBoardComponent {
 
-  @Input() date: Date;
+  private firstDayInMonth: Date;
   @Input() moodsOfTheMonth: Mood[] = [];
-  numberOfDaysInWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  numberOfDaysInMonth = Array(5 * 7); // TODO
+  namesOfDaysInWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  daysInMonth: number[] = [];
+  offsetCells: number[] = [];
+  numberOfRowsInCalendar = 0;
 
-  ngOnInit(): void {
+  constructor(private moodService: MoodService) {
   }
 
-  generateGridClassesForSingleDay(index): string {
-    // const date = this.getDateOutOfIndex(index);
-    // const moodsOfADay = this.getMoodsOfADay(moment(date).dayOfYear());
-    // const colorsAsText = this.getColorsOf(moodsOfADay);
-    // return `linear-gradient(to bottom, ${colorsAsText})`;
-    return 'linear-gradient(to bottom, #dddddd, #f5f5f5)';
+  @Input()
+  set date(newDate: Date) {
+    this.firstDayInMonth = newDate;
+    const daysInMonth = moment(this.firstDayInMonth).daysInMonth();
+    const offset = this.firstDayInMonth.getDay();
+    this.offsetCells = Array(offset);
+    this.numberOfRowsInCalendar = Math.ceil((offset + daysInMonth) / 7);
+    this.daysInMonth = Array(daysInMonth);
+  }
+
+  generateGridClassesForSingleDay(index: number): string {
+    const date = moment(this.firstDayInMonth).add(index, 'day').toDate();
+    const moodsOfADay = this.moodService.getMoodsByDate(date);
+    if (moodsOfADay.length === 0) {
+      return 'linear-gradient(to bottom, #dddddd, #f5f5f5)';
+    }
+    const colorsAsText = this.getColorsOf(moodsOfADay);
+    return `linear-gradient(to bottom, ${colorsAsText})`;
   }
 
   private getColorsOf(moodsOfADay: Mood[]): string {
@@ -35,13 +50,11 @@ export class MonthlyMoodBoardComponent implements OnInit {
     return moodsOfADay.map(it => it.category.toString()).reduce((a, b) => a + ', ' + b);
   }
 
-  getDateOutOfIndex(index: number): Date {
-    const month = Math.floor(index / 32);
-    const day = Math.floor(index % 32);
-    const newDate = new Date(this.date);
-    newDate.setMonth(month);
-    newDate.setDate(day);
-    return newDate;
+  calculateNumberOfDay(index: number): number {
+    return index + 1;
   }
 
+  monthAndYearHeaderName(): string {
+    return moment(this.firstDayInMonth).format('MMMM YYYY');
+  }
 }

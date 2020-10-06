@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Mood } from '../mood';
 import { MoodService } from '../mood.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'mb-monthly-mood-board-container',
@@ -8,7 +9,7 @@ import { MoodService } from '../mood.service';
   styleUrls: ['./monthly-mood-board-container.component.sass']
 })
 export class MonthlyMoodBoardContainerComponent implements OnInit {
-  date: Date = new Date(); // TODO
+  date: Date = moment().startOf('month').toDate(); // TODO as url param
   moodsOfTheMonth: Mood[] = [];
 
   constructor(private moodService: MoodService) {
